@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioSource audioSource;
+
     public TMP_Text collectiblesNumbersText;
     
     private int collectiblesNumber;
@@ -26,7 +28,7 @@ public class GameManager : MonoBehaviour
         if (transform.childCount <= 0)
         {
             Debug.Log("You Win");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
@@ -35,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public void AddCollectible()
     {
+       audioSource.Play();      
+
        collectiblesNumber = collectiblesNumber + 1;
        
        collectiblesNumbersText.text = collectiblesNumber.ToString(); 
